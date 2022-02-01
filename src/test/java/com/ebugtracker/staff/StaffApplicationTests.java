@@ -38,22 +38,6 @@ class ApplicationTests {
 		bug.setRemedy("Solved Successfully");
 	assertNotNull(bug.getRemedy());
 	}
-	
-	@Test
-    public void testAssignBugToStaff(){
-        long staffId =1;
-        long ticketId = 1;
 
-        Set<Long>assignedTickets=new HashSet<>();
-        assignedTickets.add(ticketId);
-
-        Staff staff=new Staff(staffId,"Chandu G","Java",assignedTickets);
-        doReturn(staff).when(service).findStaffById(staffId);
-
-        when(repository.save(staff)).thenReturn(staff);
-        Staff resultantStaff=service.assignBugToStaff(staffId,ticketId);
-        Boolean result=resultantStaff.getAssignedTicketIds().contains(1L);
-        assertEquals(true,result);
-	}
 	
 }
